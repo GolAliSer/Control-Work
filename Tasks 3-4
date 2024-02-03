@@ -23,9 +23,12 @@ void findPairs(int* array, int lenght, int sum) { //Создаем функци�
     }
 }
 /*Task 4*/
+void ContactFunctionl() {}
+void addContact() {}
+void deleteContact() {}
+void updateContact() {}
+void printContacts() {}
     
-
-
 int main()
 {
     /*Task 3*/
@@ -50,6 +53,41 @@ int main()
     delete[] array;
 
     /*Task 4*/
+    void (*function)() = ContactFunctionl;
+
+    int choice = 0; // Переменная для выбора операции пользователем
+
+    while (true) {// Выводим все возможные функции
+        std::cout << "Phone spravochnik" << std::endl;
+        std::cout << "1. Add cont" << std::endl;
+        std::cout << "2. Delete cont" << std::endl;
+        std::cout << "3. Upgrade inf" << std::endl;
+        std::cout << "4. Printinformation" << std::endl;
+        std::cout << "0. Exit" << std::endl;
+
+        //Даем выбор пользователя
+        std::cout << "Choose operation: ";
+        std::cin >> choice;
+
+        switch (choice) { //Через оператор switch меняем значение переменной в зависимости от выбора пользователя
+       case 1:
+           function = addContact;
+            break;
+       case 2:
+           function = deleteContact;
+           break;
+       case 3:
+           function = updateContact;
+           break;
+       case 4:
+           function = printContacts;
+           break;
+       case 0:
+            return 0;
+       default:
+            std::cout << "Error" << std::endl;
+           continue;
+       }
 
     return 0;
 }
