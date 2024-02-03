@@ -1,0 +1,55 @@
+#include <iostream>
+
+/*Task 3*/
+void FilltheArray(int* array, int lenght) { //Создаем функцию для заполнения массива
+    for (int i = 0; i < lenght; i++) { //перебором заполняем
+            // генерируем случайные числа с помощью: (rand() % (end - start + 1) + start), где end - это конечное число (50), а start - начальное число (1)
+            array[i] = rand() % (50 - 1 + 1) + 1;
+
+    }
+}
+void ShowArray(int* array, int lenght) { //Создаем функцию для вывода массива
+    for (int i = 0; i < lenght; i++) { //перебором выводим массив
+        std::cout << array[i] << ", ";
+    }
+}
+void findPairs(int* array, int lenght, int sum) { //Создаем функцию для поиска пар по сумме
+    for (int i = 0; i < lenght; i++) { //перебираем различные пары
+        for (int j = i + 1; j < lenght; j++) {
+            if (array[i] + array[j] == sum) { //если их сумма равна заданному числу, то выводим пару
+                std::cout << array[i] << " + " << array[j] << " = " << sum << std::endl;
+            }
+        }
+    }
+}
+/*Task 4*/
+    
+
+
+int main()
+{
+    /*Task 3*/
+    //Для матрицы нужны 
+    int lenght = 0; //иницилизируем перемнные для количества строк и столбцов
+    int number = 0;
+    std::cout << "Enter the lenght : ";
+    std::cin >> lenght; //вводим количество строк
+
+    int* array = new int [lenght];  // выделяем память для массива
+
+    FilltheArray(array, lenght);  // заполняем массив случайными числами через функцию
+    std::cout << "Array:" << std::endl;
+    ShowArray(array, lenght);  // прказываем массив через функцию
+
+    std::cout << std::endl;
+    std::cout << "Enter the number to find pairs : ";
+    std::cin >> number; //вводим количество строк
+
+    findPairs(array, lenght, number); //ищем пары 
+
+    delete[] array;
+
+    /*Task 4*/
+
+    return 0;
+}
